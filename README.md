@@ -26,3 +26,23 @@ Installation
    ```
    {"result":0.30000000000000004}
    ```
+
+Benchmark
+---------
+
+Bruger "wrk" via. WSL https://github.com/wg/wrk 
+
+$ wrk -t 4 -c 10 -d15s "http://localhost:30007/plus?left=13.36&right=0.1" --latency
+Running 15s test @ http://localhost:30007/plus?left=13.36&right=0.1
+  4 threads and 10 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.68ms   25.80ms  97.25ms   80.39%
+    Req/Sec   234.18     64.36   393.00     66.67%
+  Latency Distribution
+     50%    2.77ms
+     75%   35.16ms
+     90%   65.52ms
+     99%   82.22ms
+  14000 requests in 15.01s, 3.52MB read
+Requests/sec:    932.64
+Transfer/sec:    240.45KB
