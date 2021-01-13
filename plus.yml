@@ -1,0 +1,47 @@
+# Which version of Kubernetes this object comes from
+apiVersion: v1
+
+# What type of object am I?
+kind: Pod
+
+# Metadata -  Meta-information about the object itself
+metadata:
+  name: plus-node-js-express-pod
+  labels:
+    app: plus-node-js-express
+
+# Spec - what you want your object to be
+spec:
+  containers:
+    - name: plus-node-js-express
+      image: nctbk/plus-node-js-express:1
+      ports:
+        - containerPort: 8080
+      resources:
+        limits:
+          memory: "64Mi"
+          cpu: "250m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: plus-node-js-express-service
+spec:
+  # Select which pods can be used to handle traffic to this service
+  # based on their labels
+  selector:
+    app: plus-node-js-express
+
+  # Expose the service on a static port on each node
+  # so that we can access the service from outside the cluster
+  type: NodePort
+
+  # Ports exposed by the service.
+  ports:
+    # `port` is the port for the service.
+    # `targetPort` is the port for the pods,
+    #  it has to match what's defined in the pod YAML.
+    - protocol: TCP
+      port: 8085 # Denne er lige meget
+      targetPort: 8080
+      nodePort: 30007 # Denne angiver den port vi kan tilgå servicen fra.

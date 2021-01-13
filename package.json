@@ -1,0 +1,14 @@
+{
+  "name": "plus-nodejs-express",
+  "version": "1.0.0",
+  "description": "Plus lavet i node.js med express",
+  "main": "plus.js",
+  "scripts": {
+    "start": "node plus.js"
+  },
+  "author": "Troels Beck Krøgh",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
