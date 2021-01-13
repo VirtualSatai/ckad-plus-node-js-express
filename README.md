@@ -21,6 +21,7 @@ Installation
    service/plus-node-js-express-service created
    ```
 2. Test forbindelsen: `curl "http://localhost:30007/plus?left=0.1&right=0.2"`
+ - Port: 30007 er givet i service konfig: `nodePort: 30007`
  - Forvent svar:
    ```
    {"result":0.30000000000000004}
